@@ -104,6 +104,7 @@ export class Graph {
     const scopes = 'people.read';
     const result = await this.client
       .api('/me/people')
+      .filter("personType/class eq 'Person' and personType/subclass eq 'OrganizationUser'")
       .search('"' + query + '"')
       .middlewareOptions(prepScopes(scopes))
       .get();
